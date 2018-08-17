@@ -14,7 +14,7 @@ export class ProductsDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
  
-  produit: IProduit = {code: 'Bidon', titre: 'Bidon', prixUnitaire: 123.45};
+  produit: IProduit;
 
   subscription: Subscription;
   code: string;
@@ -22,13 +22,18 @@ export class ProductsDetailsComponent implements OnInit, OnDestroy {
   constructor(private _route: ActivatedRoute, private _router: Router, private _service: ProduitsService) { }
 
   ngOnInit() {
-    this.subscription =this._route.paramMap.subscribe(
+    this.subscription = this._route.paramMap.subscribe(
       res => {
         this.code = res.get('id');
-        this.produit = this._service.getProduitById(this.code);
       }
     );
     // this.code = this._route.snapshot.paramMap.get('id');
+
+    this._service.getProduitById(this.code).subscribe(
+      res => {
+        this.produit = res;
+      }
+    );
   }
 
   navigateToList() {

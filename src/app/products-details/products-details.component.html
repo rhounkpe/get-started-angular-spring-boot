@@ -8,17 +8,17 @@
         <tbody>
           <tr>
             <td>Code</td>
-            <td>{{produit.code}}</td>
+            <td>{{produit?.code}}</td>
           </tr>
 
           <tr>
               <td>Titre</td>
-              <td>{{produit.titre}}</td>
+              <td>{{produit?.titre}}</td>
           </tr>
 
           <tr>
               <td>Prix Unitaire</td>
-              <td>{{produit.prixUnitaire | currency:"EUR":"symbol"}}</td>
+              <td>{{produit?.prixUnitaire | currency:"EUR":"symbol"}}</td>
           </tr>
         </tbody>
       </table>
