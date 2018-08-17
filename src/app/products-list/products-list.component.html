@@ -4,7 +4,8 @@
   </div>
   <div class="card-body">
 
-    <table class="table table-bordered table-striped">
+    <table *ngIf='data && data.length'
+      class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Code</th>
@@ -15,8 +16,8 @@
       <tbody>
         <tr *ngFor="let p of data">
           <td scope="row">{{p.code}}</td>
-          <td>{{p.titre}}</td>
-          <td>{{p.prixUnitaire}}</td>
+          <td><a [routerLink]="['/detail', p.code]">{{p.titre}}</a></td>
+          <td>{{p.prixUnitaire | currency:"EUR":"symbol"}}</td>
         </tr>
       </tbody>
     </table>
